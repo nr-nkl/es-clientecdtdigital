@@ -1,0 +1,369 @@
+openapi: 3.0.1
+servers:
+  - description: Index swagger
+    #- url: https://localhost:8080
+    #url produccion
+    url: https://api.mibanco.com.co
+info:
+  description: Servicio de entidad ClienteCdtDigitalES.
+  version: 0.0.1
+  title: ClienteCDTDigitalES
+  contact:
+    name: MiBanco
+    url: https://www.mibanco.com.co/
+    email: api@samtel.co
+  license:
+    name: GNU GPLv3
+    url: ‘https://www.gnu.org/licenses/gpl-3.0.html’
+tags:
+  - name: Cliente cdt digital
+    description: Cliente cdt digital
+#----------------------------
+#Endpoints de la Entidad
+#----------------------------
+paths:
+  /v1/es/clienteCDT:
+    post:
+      tags:
+        - Crear cliente cdt digital
+      operationId: crearClienteCdtDigital
+      requestBody:
+        description: Crear cliente cdt digital
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClienteCDTDigitalType"
+      responses:
+        "200":
+          description: Usuario creado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+#---------------------------------------------
+#Se declaran los Modelos/Schemas del servicio
+#---------------------------------------------
+components:
+  schemas:
+    ClienteCDTDigitalType:
+      type: object
+      properties:
+        tipoTelefonoPrincipal:
+          type: string
+        telefonoPrincipal:
+          type: string
+        tipoCorreoElectronico:
+          type: string
+        genero:
+          $ref: "#/components/schemas/GeneroEnum"
+        fechaNacimientoDia:
+          type: integer
+        fechaNacimientoMes:
+          type: integer
+        fechaNacimientoAno:
+          type: integer
+        lugarNacimientoPais:
+          type: string
+        lugarNacimientoDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        lugarNacimientoCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        nacionalidad:
+          type: string
+        nivelConsulta:
+          type: string
+        fechaExpedicionDocumentoDia:
+          type: integer
+        fechaExpedicionDocumentoMes:
+          type: integer
+        fechaExpedicionDocumentoAno:
+          type: integer
+        expedicionDocumentoPais:
+          type: string
+        expedicionDocumentoDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        expedicionDocumentoCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        paisResidencia:
+          type: string
+        subActividadEconomica:
+          type: string
+        ocupacion:
+          type: string
+        actividadEconomicaCIIU:
+          $ref: "#/components/schemas/TipoActividadCIIUEnum"
+        sectorEconomico:
+          type: string
+        registroBiometria:
+          type: boolean
+        causalNoBiometria:
+          type: integer
+        direccionPersonal:
+          type: string
+        direccionPersonalPais:
+          type: string
+        direccionPersonalDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        direccionPersonalCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        barrioDireccionPersonal:
+          type: string
+        usoDireccionPersonal:
+          type: string
+        tipoDireccionPersonal:
+          type: string
+        categoriaDireccionPersonal:
+          type: string
+        envioCorrespondencia:
+          type: string
+        ingresosMensuales:
+          type: float
+        patrimonio:
+          type: float
+        declaracionOrigenFondos:
+          type: string
+        reconocimientoPublicoExtranjero:
+          type: boolean
+        reconocimientoPublicoNacional:
+          type: boolean
+        segmento:
+          type: string
+        nicho:
+          type: string
+        canalContactoPreferido:
+          type: string
+        asesorComercial:
+          type: integer
+        tipoVinculacion:
+          type: string
+        porqueMedioSeEnteroDeNosotros:
+          type: string
+        agenciaVinculacion:
+          type: integer
+        fechaDiligenciamientoFormularioDia:
+          type: integer
+        fechaDiligenciamientoFormularioMes:
+          type: integer
+        fechaDiligenciamientoFormularioAno:
+          type: integer
+        fechaVinculacionDia:
+          type: integer
+        fechaVinculacionMes:
+          type: integer
+        fechaVinculacionAno:
+          type: integer
+        lugarDiligenciamientoFormularioPais:
+          type: string
+        lugarDiligenciamientoFormularioDpto:
+          $ref: "#/components/schemas/DepartamentoEnum"
+        lugarDiligenciamientoFormularioCiudad:
+          $ref: "#/components/schemas/CiudadEnum"
+        residenteFiscalEnOtroPais:
+          type: boolean
+        identificacionFiscal1:
+          type: integer
+        direccionExtranjero:
+          type: boolean
+        tin1:
+          type: integer
+        residenciaFiscalPais:
+          type: string
+        clasificacionFatca:
+          type: string
+        fechaClasificacionFatca:
+          type: string
+          format: Date
+        clasificacionCRS:
+          type: string
+        fechaClasificacionCRS:
+          type: string
+          format: Date
+        autorizacionEnvioCelularCorreo:
+          type: boolean
+        canalEnvioCelularYCorreo:
+          type: string
+        productoSolicitado:
+          type: string
+        clienteBase:
+          $ref: "#/components/schemas/ClienteBaseType"
+        codigoNovedadListas:
+          type: string
+    GeneroEnum:
+      type: string
+      enum:
+        - FEMENINO
+        - MASCULINO
+    DepartamentoEnum:
+      type: string
+      properties:
+        codigo:
+          type: string
+        descripcion:
+          type: string
+      enum:
+        - codigo: "05"
+          descripcion: "ANTIOQUIA"
+        - codigo: "08"
+          descripcion: "ATLANTICO"
+        - codigo: "11"
+          descripcion: "BOGOTA D.C."
+        - codigo: "12"
+          descripcion: "FUERA DEL PAIS"
+        - codigo: "13"
+          descripcion: "BOLIVAR"
+        - codigo: "15"
+          descripcion: "BOYACA"
+        - codigo: "17"
+          descripcion: "CALDAS"
+        - codigo: "18"
+          descripcion: "CAQUETA"
+        - codigo: "19"
+          descripcion: "CAUCA"
+        - codigo: "20"
+          descripcion: "CESAR"
+        - codigo: "23"
+          descripcion: "CORDOBA"
+        - codigo: "25"
+          descripcion: "CUNDINAMARCA"
+    CiudadEnum:
+      type: string
+      properties:
+        dpto:
+          type: string
+        ciudad:
+          type: string
+        descripcion:
+          type: string
+      enum:
+        - dpto: "05"
+          ciudad: "05001"
+          descripcion: "MEDELLIN"
+        - dpto: "05"
+          ciudad: "05002"
+          descripcion: "ABEJORRAL"
+        - dpto: "05"
+          ciudad: "05004"
+          descripcion: "ABRIAQUI"
+        - dpto: "05"
+          ciudad: "05021"
+          descripcion: "ALEJANDRIA"
+        - dpto: "05"
+          ciudad: "05030"
+          descripcion: "AMAGA"
+        - dpto: "05"
+          ciudad: "05031"
+          descripcion: "AMALFI"
+        - dpto: "05"
+          ciudad: "05034"
+          descripcion: "ANDES"
+        - dpto: "05"
+          ciudad: "05036"
+          descripcion: "ANGELOPOLIS"
+        - dpto: "05"
+          ciudad: "05038"
+          descripcion: "ANGOSTURA"
+        - dpto: "05"
+          ciudad: "05040"
+          descripcion: "ANORI"
+    TipoActividadCIIUEnum:
+      type: string
+      properties:
+        codigo:
+          type: string
+        descripcion:
+          type: string
+      enum:
+        - codigo: "0010"
+          descripcion: "ASALARIADOS"
+        - codigo: "0081"
+          descripcion: "SIN ACTIVIDAD ECONOMICA"
+        - codigo: "0082"
+          descripcion: "PERSONAS NATURALES SUBSIDIADAS POR TERCEROS"
+        - codigo: "0090"
+          descripcion: "RENTISTAS DE CAPITAL SOLO PARA PERSONAS NATUR"
+        - codigo: "0111"
+          descripcion: "CULTIVO DE CEREALES (EXCEPTO ARROZ), LEGUMBRE"
+        - codigo: "0112"
+          descripcion: "CULTIVO DE ARROZ"
+        - codigo: "0113"
+          descripcion: "CULTIVO DE HORTALIZAS, RAICES Y TUBERCULOS"
+        - codigo: "0114"
+          descripcion: "CULTIVO DE TABACO"
+        - codigo: "0115"
+          descripcion: "CULTIVO DE PLANTAS TEXTILES"
+        - codigo: "0119"
+          descripcion: "OTROS CULTIVOS TRANSITORIOS N.C.P."
+        - codigo: "0121"
+          descripcion: "CULTIVO DE FRUTAS TROPICALES Y SUBTROPICALES"
+    ClienteBaseType:
+      type: object
+      properties:
+        numeroCliente:
+          type: integer
+        tipoPersona:
+          $ref: "#/components/schemas/TipoPersonaEnum"
+        tipoDocumento:
+          $ref: "#/components/schemas/TipoDocumentoEnum"
+        numeroDocumento:
+          type: integer
+        fechaExpedicionDocumento:
+          type: string
+          format: Date
+        primerNombre:
+          type: string
+        numeroCelular:
+          type: integer
+        segundoNombre:
+          type: string
+        primerApellido:
+          type: string
+        segundoApellido:
+          type: string
+        correoElectronico:
+          type: string
+    TipoPersonaEnum:
+      type: string
+      properties:
+        codigo:
+          type: string
+        descripcion:
+          type: string
+        enum:
+          - codigo: "1"
+            descripcion: "JURÍDICA"
+          - codigo: "2"
+            descripcion: "NATURAL"
+    TipoDocumentoEnum:
+      type: string
+      properties:
+        codigo:
+          type: string
+        descripcion:
+          type: string
+        enum:
+          - codigo: "CC"
+            descripcion: "CEDULA DE CIUDADANÍA"
+          - codigo: "TI"
+            descripcion: "TARJETA DE IDENTIDAD"
+          - codigo: "CDI"
+            descripcion: "CARNE DIPLOMATICO"
+          - codigo: "CE"
+            descripcion: "CEDULA DE EXTRANJERÍA"
+          - codigo: "CPA"
+            descripcion: "CEDULA PAISES ANDINOS"
+          - codigo: "NIT"
+            descripcion: "NUMERO DE IDENTIFICACION TRIBUTARIA"
+          - codigo: "PAS"
+            descripcion: "PASAPORTE"
+          - codigo: "RCN"
+            descripcion: "REGISTRO CIVIL"
+          - codigo: "RUT"
+            descripcion: "REGISTRO UNICO TRIBUTARIO"
+          - codigo: "TE"
+            descripcion: "TERCEROS DEL EXTERIOR SIN DOMICILIO"
