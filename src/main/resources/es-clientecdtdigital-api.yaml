@@ -16,8 +16,8 @@ info:
     name: GNU GPLv3
     url: ‘https://www.gnu.org/licenses/gpl-3.0.html’
 tags:
-  - name: Cliente cdt digital
-    description: Cliente cdt digital
+  - name: Cliente CDT Digital
+    description: Cliente CDT Digital
 #----------------------------
 #Endpoints de la Entidad
 #----------------------------
@@ -28,14 +28,14 @@ paths:
         - Crear cliente cdt digital
       operationId: crearClienteCdtDigital
       requestBody:
-        description: Crear cliente cdt digital
+        description: Crear Cliente CDT Digital
         content:
           application/json:
             schema:
               $ref: "#/components/schemas/ClienteCDTDigitalType"
       responses:
         "200":
-          description: Usuario creado.
+          description: Cliente CDT Digital creado.
           content:
             application/json:
               schema:
@@ -190,8 +190,6 @@ components:
           type: string
         productoSolicitado:
           type: string
-        clienteBase:
-          $ref: "#/components/schemas/ClienteBaseType"
         codigoNovedadListas:
           type: string
     GeneroEnum:
@@ -301,32 +299,6 @@ components:
           descripcion: "OTROS CULTIVOS TRANSITORIOS N.C.P."
         - codigo: "0121"
           descripcion: "CULTIVO DE FRUTAS TROPICALES Y SUBTROPICALES"
-    ClienteBaseType:
-      type: object
-      properties:
-        numeroCliente:
-          type: integer
-        tipoPersona:
-          $ref: "#/components/schemas/TipoPersonaEnum"
-        tipoDocumento:
-          $ref: "#/components/schemas/TipoDocumentoEnum"
-        numeroDocumento:
-          type: integer
-        fechaExpedicionDocumento:
-          type: string
-          format: Date
-        primerNombre:
-          type: string
-        numeroCelular:
-          type: integer
-        segundoNombre:
-          type: string
-        primerApellido:
-          type: string
-        segundoApellido:
-          type: string
-        correoElectronico:
-          type: string
     TipoPersonaEnum:
       type: string
       properties:
