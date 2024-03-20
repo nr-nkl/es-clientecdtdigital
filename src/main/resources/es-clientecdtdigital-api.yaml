@@ -26,7 +26,7 @@ paths:
     post:
       tags:
         - Crear cliente cdt digital
-      operationId: crearClienteCdtDigital
+      operationId: crearClienteCDTDigital
       requestBody:
         description: Crear Cliente CDT Digital
         content:

@@ -16,11 +16,11 @@ import jakarta.validation.Valid;
 
 
 @Path("/v1/es/clienteCDT")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-20T08:44:19.178743700-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-20T14:21:35.336002400-05:00[America/Bogota]")
 public interface V1ClientecdtdigitalApi {
 
     @POST
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    Response crearClienteCdtDigital(@Valid ClienteCDTDigitalType clienteCDTDigitalType);
+    Response crearClienteCDTDigital(@Valid ClienteCDTDigitalType clienteCDTDigitalType);
 }

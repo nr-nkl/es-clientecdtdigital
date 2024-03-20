@@ -6,8 +6,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import org.modelmapper.ModelMapper;
 
 @ApplicationScoped
-public class ClienteCdtDigitalMapper {
-    public ClienteCDTDigital clienteCdtTypeToEntity(ClienteCDTDigitalType clienteCDTDigitalType){
+public class ClienteCDTDigitalMapper {
+    public ClienteCDTDigital clienteCDTTypeToEntity(ClienteCDTDigitalType clienteCDTDigitalType){
         return new ModelMapper().map(clienteCDTDigitalType, ClienteCDTDigital.class);
     }
 }

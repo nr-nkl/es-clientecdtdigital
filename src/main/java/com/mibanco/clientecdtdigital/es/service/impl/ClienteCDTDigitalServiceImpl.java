@@ -5,7 +5,7 @@ import com.mibanco.clientecdtdigital.es.entity.ClienteCDTDigital;
 import com.mibanco.clientecdtdigital.es.gen.type.ClienteCDTDigitalType;
 import com.mibanco.clientecdtdigital.es.service.contract.IClienteCDTDigitalService;
 import com.mibanco.clientecdtdigital.es.utils.exception.ApplicationException;
-import com.mibanco.clientecdtdigital.es.utils.mapper.ClienteCdtDigitalMapper;
+import com.mibanco.clientecdtdigital.es.utils.mapper.ClienteCDTDigitalMapper;
 import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -21,22 +21,22 @@ public class ClienteCDTDigitalServiceImpl implements IClienteCDTDigitalService {
     private static final Logger LOG = LoggerFactory.getLogger(ClienteCDTDigitalServiceImpl.class);
 
     @Inject
-    ClienteCdtDigitalMapper clienteCdtDigitalMapper;
+    ClienteCDTDigitalMapper clienteCDTDigitalMapper;
 
     @Inject
     ClienteCDTDigitalDao clienteCDTDigitalDao;
 
     @Transactional
-    public ClienteCDTDigitalType crearClienteCdtDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
-        LOG.info("Inicia crearClienteCdtDigital Impl.");
+    public ClienteCDTDigitalType crearClienteCDTDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
+        LOG.info("Inicia crearClienteCDTDigital Impl.");
         try{
-            ClienteCDTDigital clienteCDTDigital = clienteCdtDigitalMapper.clienteCdtTypeToEntity(clienteCDTDigitalType);
+            ClienteCDTDigital clienteCDTDigital = clienteCDTDigitalMapper.clienteCDTTypeToEntity(clienteCDTDigitalType);
             clienteCDTDigitalDao.persist(clienteCDTDigital);
-            LOG.info("Termina crearClienteCdtDigital Impl.");
+            LOG.info("Termina crearClienteCDTDigital Impl.");
             return clienteCDTDigitalType;
         }catch (ApplicationException e){
-            Log.error(ERROR_SERVICIO + e.getMessage() + " crearClienteCdtDigital Impl.");
-            throw new ApplicationException(ERROR_SERVICIO+ e.getMessage());
+            Log.error(ERROR_SERVICIO + e.getMessage() + " crearClienteCDTDigital Impl.");
+            throw new ApplicationException(ERROR_SERVICIO+ e.getMessage() + " crearClienteCDTDigital Impl.");
         }
     }
 }

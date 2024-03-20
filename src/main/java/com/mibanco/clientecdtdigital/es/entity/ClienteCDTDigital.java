@@ -17,7 +17,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @RegisterForReflection
 @Entity
-@Table(name = "ClienteCDTDigital")
 public class ClienteCDTDigital implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
