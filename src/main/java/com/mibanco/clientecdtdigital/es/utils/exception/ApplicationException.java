@@ -1,4 +1,4 @@
-package com.mibanco.clientecdtdigital.es.utils;
+package com.mibanco.clientecdtdigital.es.utils.exception;
 
 public class ApplicationException extends RuntimeException{
     private static final long serialVersionUID = 1L;

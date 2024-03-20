@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("ClienteCDTDigitalType")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-20T00:30:27.982346800-05:00[America/Bogota]", comments = "Generator version: 7.4.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-20T08:44:19.178743700-05:00[America/Bogota]")
 public class ClienteCDTDigitalType   {
   private @Valid String tipoTelefonoPrincipal;
   private @Valid String telefonoPrincipal;
