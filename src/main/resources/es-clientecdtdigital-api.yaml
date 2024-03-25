@@ -46,6 +46,118 @@ paths:
           description: "Parámetros de entrada no validos."
         "404":
           description: "No se encuentra la novedad."
+
+#----- Buscar cliente cdt por Id -----
+  /v1/es/buscarClienteCDTDigitalId/{idCliente}:
+    get:
+      tags:
+        - Buscar Cliente CDT digital
+      parameters:
+        - in: path
+          name: idCliente
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: Id del cliente
+      operationId: buscarClienteCDTDigitalId
+      responses:
+        "200":
+          description: Se encontro el Cliente CDT Digital.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+
+#----- Buscar todos los clientes cdt por Id -----
+  /v1/es/listarTodosLosClientes/:
+    get:
+      tags:
+        - Listar todos los clientes CDT Digital
+      operationId: listarClientesCDTDigital
+      responses:
+        "200":
+          description: Clientes CDT Digital listados.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+
+##----- Eliminar Cliente CDT Digital por Id -----
+  /v1/es/eliminarClienteCDTDigitalId/{idCliente}:
+    delete:
+      tags:
+        - Eliminar los clientes CDT Digital
+      parameters:
+        - in: path
+          name: idCliente
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      operationId: eliminarClienteCDTDigitalId
+      responses:
+        "200":
+          description: Cliente CDT Digital eliminado
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+
+#-------- Actualizar Cliente CDT por Id ----------
+  /v1/es/actualizarClienteCDTId/{idCliente}:
+    put:
+      tags:
+        - Actualizar cliente CDT Digital por id
+      parameters:
+        - in: path
+          name: idCliente
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+            description: ID del Cliente
+      operationId: actualizarClienteCDTId
+      requestBody:
+        description: Datos para actualizar Cliente CDT Digital
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClienteCDTDigitalType"
+      responses:
+        "200":
+          description: Cliente CDT Digital Actualizado.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ClienteCDTDigitalType"
+        "400":
+          description: "Parámetros de entrada no validos."
+        "404":
+          description: "No se encuentra la novedad."
+
+
+
 #---------------------------------------------
 #Se declaran los Modelos/Schemas del servicio
 #---------------------------------------------

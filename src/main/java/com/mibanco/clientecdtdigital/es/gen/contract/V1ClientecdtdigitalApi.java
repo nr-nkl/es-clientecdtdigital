@@ -15,12 +15,34 @@ import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
 
-@Path("/v1/es/clienteCDT")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-20T14:21:35.336002400-05:00[America/Bogota]")
+@Path("/v1/es")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-24T23:04:35.272096300-05:00[America/Bogota]", comments = "Generator version: 7.4.0")
 public interface V1ClientecdtdigitalApi {
 
+    @PUT
+    @Path("/actualizarClienteCDTId/{idCliente}")
+    @Consumes({ "application/json" })
+    @Produces({ "application/json" })
+    Response actualizarClienteCDTId(@PathParam("idCliente") @Min(1) Integer idCliente,@Valid ClienteCDTDigitalType clienteCDTDigitalType);
+
+    @GET
+    @Path("/buscarClienteCDTDigitalId/{idCliente}")
+    @Produces({ "application/json" })
+    Response buscarClienteCDTDigitalId(@PathParam("idCliente") @Min(1) Integer idCliente);
+
     @POST
+    @Path("/clienteCDT")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
     Response crearClienteCDTDigital(@Valid ClienteCDTDigitalType clienteCDTDigitalType);
+
+    @DELETE
+    @Path("/eliminarClienteCDTDigitalId/{idCliente}")
+    @Produces({ "application/json" })
+    Response eliminarClienteCDTDigitalId(@PathParam("idCliente") @Min(1) Integer idCliente);
+
+    @GET
+    @Path("/listarTodosLosClientes/")
+    @Produces({ "application/json" })
+    Response listarClientesCDTDigital();
 }
