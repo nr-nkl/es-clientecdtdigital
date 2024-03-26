@@ -3,6 +3,7 @@ package com.mibanco.clientecdtdigital.es.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.mibanco.clientecdtdigital.es.constant.Constant;
 import com.mibanco.clientecdtdigital.es.dao.ClienteCDTDigitalDao;
 import com.mibanco.clientecdtdigital.es.entity.ClienteCDTDigital;
@@ -15,9 +16,12 @@ import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import static com.mibanco.clientecdtdigital.es.constant.Constant.ERROR_SERVICIO;
@@ -39,12 +43,12 @@ public class ClienteCDTDigitalServiceImpl implements IClienteCDTDigitalService {
         try{
             ClienteCDTDigital clienteCDTDigital = clienteCDTDigitalMapper.clienteCDTTypeToEntity(clienteCDTDigitalType);
             clienteCDTDigitalDao.persist(clienteCDTDigital);
-            LOG.info("Termina crearClienteCDTDigital Impl.");
-            return clienteCDTDigitalType;
         }catch (ApplicationException e){
             Log.error(ERROR_SERVICIO + e.getMessage() + " crearClienteCDTDigital Impl.");
             throw new ApplicationException(ERROR_SERVICIO+ e.getMessage() + " crearClienteCDTDigital Impl.");
         }
+        LOG.info("Termina crearClienteCDTDigital Impl.");
+        return clienteCDTDigitalType;
     }
 
     @Override
@@ -93,13 +97,28 @@ public class ClienteCDTDigitalServiceImpl implements IClienteCDTDigitalService {
     public ClienteCDTDigitalType actualizarClienteCDTId(Integer idCliente, ClienteCDTDigitalType clienteCDTDigitalType) {
         LOG.info("Inicia el proceso actualizarClienteCDTId Impl.");
         try{
-            ClienteCDTDigital clienteCDTDigital = clienteCDTDigitalDao.findById(idCliente.longValue());
+            ClienteCDTDigital clienteCDTDigitalAnt = clienteCDTDigitalDao.findById(idCliente.longValue());
+            ClienteCDTDigital clienteCDTDigitalNuevo = clienteCDTDigitalMapper.clienteCDTTypeToEntity(clienteCDTDigitalType);
 
+            clienteCDTDigitalAnt.setAgenciaVinculacion(clienteCDTDigitalNuevo.getAgenciaVinculacion());
+            clienteCDTDigitalAnt.setAgenciaVinculacion(clienteCDTDigitalNuevo.getAgenciaVinculacion());
+            clienteCDTDigitalAnt.setTipoTelefonoPrincipal(clienteCDTDigitalNuevo.getTipoTelefonoPrincipal());
+            clienteCDTDigitalAnt.setTelefonoPrincipal(clienteCDTDigitalNuevo.getTelefonoPrincipal());
+            clienteCDTDigitalAnt.setTipoCorreoElectronico(clienteCDTDigitalNuevo.getTipoCorreoElectronico());
+            clienteCDTDigitalAnt.setGenero(clienteCDTDigitalNuevo.getGenero());
+            clienteCDTDigitalAnt.setFechaNacimientoDia(clienteCDTDigitalNuevo.getFechaNacimientoDia());
+            clienteCDTDigitalAnt.setFechaNacimientoMes(clienteCDTDigitalNuevo.getFechaNacimientoMes());
+            clienteCDTDigitalAnt.setFechaNacimientoAno(clienteCDTDigitalNuevo.getFechaNacimientoAno());
+            clienteCDTDigitalAnt.setLugarNacimientoPais(clienteCDTDigitalNuevo.getLugarNacimientoPais());
+            clienteCDTDigitalAnt.setLugarNacimientoDpto(clienteCDTDigitalNuevo.getLugarNacimientoDpto());
+            clienteCDTDigitalAnt.setLugarNacimientoCiudad(clienteCDTDigitalNuevo.getLugarNacimientoCiudad());
+            clienteCDTDigitalAnt.setNacionalidad(clienteCDTDigitalNuevo.getNacionalidad());
+            clienteCDTDigitalAnt.setNivelConsulta(clienteCDTDigitalNuevo.getNivelConsulta());
         }catch (ApplicationException e){
             LOG.error(Constant.ERROR_SERVICIO+e.getMessage()+" actualizarClienteCDTId Impl.");
             throw new ApplicationException(Constant.ERROR_SERVICIO+e.getMessage()+" actualizarClienteCDTId Impl.");
         }
         LOG.info("Termina el proceso actualizarClienteCDTId Impl");
-        return null;
+        return clienteCDTDigitalType;
     }
 }
