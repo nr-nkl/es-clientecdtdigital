@@ -1,4 +1,4 @@
-package com.mibanco.clientecdtdigital.es.controller;
+package com.mibanco.clientecdtdigital.es.controller.rest;
 
 import com.mibanco.clientecdtdigital.es.gen.contract.V1ClientecdtdigitalApi;
 import com.mibanco.clientecdtdigital.es.gen.type.ClienteCDTDigitalType;
