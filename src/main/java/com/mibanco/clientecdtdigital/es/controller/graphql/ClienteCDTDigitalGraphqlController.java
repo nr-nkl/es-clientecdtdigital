@@ -22,7 +22,7 @@ public class ClienteCDTDigitalGraphqlController {
     ClienteCDTDigitalServiceImpl clienteCDTDigitalServiceImpl;
 
     @Mutation("crearCliente")
-    @Transactional
+//    @Transactional
     public Response crearClienteCDTDigital(ClienteCDTDigitalType clienteCDTDigitalType) {
         LOG.info("Inicia el proceso crearClienteCDTDigital GraphQL Controller.");
         try{
@@ -64,7 +64,7 @@ public class ClienteCDTDigitalGraphqlController {
     }
 
     @Mutation("eliminarCliente")
-    @Transactional
+//    @Transactional
     public Response eliminarClienteCDTDigitalId(Integer idCliente) {
         LOG.info("Inicia el proceso eliminarClienteCDTDigitalId GraphQL Controller.");
         try{
@@ -78,7 +78,7 @@ public class ClienteCDTDigitalGraphqlController {
     }
 
     @Mutation("actualizarCliente")
-    @Transactional
+//    @Transactional
     public Response actualizarClienteCDTId(Integer idCliente, ClienteCDTDigitalType clienteCDTDigitalType) {
         LOG.info("Inicia el proceso actualizarClienteCDTId GraphQL Controller.");
         try{
@@ -90,6 +90,4 @@ public class ClienteCDTDigitalGraphqlController {
         LOG.info("Termina el proceso actualizarClienteCDTId GraphQL Controller.");
         return Response.status(Response.Status.OK).build();
     }
-
-
 }

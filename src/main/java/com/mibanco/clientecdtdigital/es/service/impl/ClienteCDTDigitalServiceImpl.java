@@ -1,9 +1,5 @@
 package com.mibanco.clientecdtdigital.es.service.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.mibanco.clientecdtdigital.es.constant.Constant;
 import com.mibanco.clientecdtdigital.es.dao.ClienteCDTDigitalDao;
 import com.mibanco.clientecdtdigital.es.entity.ClienteCDTDigital;
@@ -18,8 +14,6 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import static com.mibanco.clientecdtdigital.es.constant.Constant.ERROR_SERVICIO;
